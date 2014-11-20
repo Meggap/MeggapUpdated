@@ -27,6 +27,17 @@ class Level_02(Level):
         level = [  ]
 
 
+        #Artefactos
+        botellas = pygame.image.load("imagenes/botellas.png").convert()
+        botellas.set_colorkey(constantes.BLANCO)
+        borracho = pygame.image.load("imagenes/borracho.png").convert()
+        borracho.set_colorkey(constantes.BLANCO)
+        farol = pygame.image.load("imagenes/farol.png").convert()
+        farol.set_colorkey(constantes.BLANCO)
+        self.background.blit(botellas, (700, 550))
+        self.background.blit(borracho, (800, 450))
+        self.background.blit(farol, (1000, 460))
+
         # Go through the array above and add platforms
         for platform in level:
             block = platforms.Platform(platform[0])
