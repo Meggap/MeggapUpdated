@@ -9,7 +9,6 @@ from jugador import Player
 def main():
     """ Programa principal """
     pygame.init()
-    
     # Set the height and width of the screen
     size = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]
     screen = pygame.display.set_mode(size)
@@ -20,7 +19,7 @@ def main():
     # Create the player
     player = Player()
     
-    # Create all the levels
+    # Create all the levels     
     level_list = []
     level_list.append(Level_01(player))
     level_list.append(Level_02(player))
@@ -28,7 +27,7 @@ def main():
     # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
-    
+
     active_sprite_list = pygame.sprite.Group()
     player.nivel = current_level
     
@@ -36,12 +35,11 @@ def main():
     player.rect.y = constantes.LARGO_PANTALLA - player.rect.height
     active_sprite_list.add(player)
     
+
     #Loop until the user clicks the close button.
     done = False
-
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
-
     # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get(): # User did something
@@ -62,7 +60,7 @@ def main():
                     player.stop()
                 if event.key == pygame.K_RIGHT and player.mover_x > 0:
                     player.stop()
-            
+
         # Update the jugador.
         active_sprite_list.update()
 
@@ -91,7 +89,6 @@ def main():
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.nivel = current_level
-
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
@@ -104,6 +101,7 @@ def main():
 
         # Limit to 60 frames per second
         clock.tick(60)
+
 
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
