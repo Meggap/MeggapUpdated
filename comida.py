@@ -109,7 +109,7 @@ class Amarillo2 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(160,0,20,34)
+        self.image = sprite_sheet.get_image(160,0,22,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -121,7 +121,7 @@ class Azul2 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(180,0,20,34)
+        self.image = sprite_sheet.get_image(182,0,21,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -133,7 +133,7 @@ class Naranja2 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(200,0,20,34)
+        self.image = sprite_sheet.get_image(205,0,22,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -145,7 +145,7 @@ class Rojo2 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(220,0,20,34)
+        self.image = sprite_sheet.get_image(225,0,23,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -157,7 +157,7 @@ class Verde2 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(240,0,20,34)
+        self.image = sprite_sheet.get_image(250,0,22,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -169,7 +169,7 @@ class Violeta2 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(260,0,20,34)
+        self.image = sprite_sheet.get_image(270,0,22,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -181,7 +181,7 @@ class Negro3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(280,0,20,34)
+        self.image = sprite_sheet.get_image(295,0,24,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -193,7 +193,7 @@ class Amarillo3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(300,0,20,34)
+        self.image = sprite_sheet.get_image(320,0,26,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -205,7 +205,7 @@ class Azul3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(320,0,20,34)
+        self.image = sprite_sheet.get_image(347,0,26,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -217,7 +217,7 @@ class Naranja3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(340,0,20,34)
+        self.image = sprite_sheet.get_image(375,0,25,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -229,7 +229,7 @@ class Rojo3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(360,0,20,34)
+        self.image = sprite_sheet.get_image(400,0,27,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -241,8 +241,8 @@ class Verde3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(380,0,20,34)
-        
+        self.image = sprite_sheet.get_image(430,0,26,34)
+
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
         self.rect.y = pos_y
@@ -253,7 +253,7 @@ class Violeta3 (pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         sprite_sheet = SpriteSheetNotas("imagenes/notasspritesheet.png")
-        self.image = sprite_sheet.get_image(400,0,20,34)
+        self.image = sprite_sheet.get_image(459,0,24,34)
         
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
