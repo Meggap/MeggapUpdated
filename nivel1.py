@@ -25,53 +25,56 @@ class Level_01(Level):
         
         #COMIDAS
         
-        self.lista_de_comidas.add(Negro2(300,535))
+        self.lista_de_comidas.add(Negro(300,535))
         self.lista_de_comidas.add(Amarillo2(500,280))
         self.lista_de_comidas.add(Azul3(1820,250))
         self.lista_de_comidas.add(Rojo2(1580,430))
-        self.lista_de_comidas.add(Naranja2(1110,140))
-        self.lista_de_comidas.add(Verde2(1820,430))
-        self.lista_de_comidas.add(Violeta2(1420,535))
-        self.lista_de_comidas.add(Rojo2(2050,520))
-        self.lista_de_comidas.add(Azul2(2150,520))
-        self.lista_de_comidas.add(Verde2(2250,520))
+        self.lista_de_comidas.add(Naranja(1110,140))
+        self.lista_de_comidas.add(Verde(1820,430))
+        self.lista_de_comidas.add(Violeta3(1420,535))
+        self.lista_de_comidas.add(Rojo(2050,520))
+        self.lista_de_comidas.add(Azul(2150,520))
+        self.lista_de_comidas.add(Verde3(2250,520))
         #self.lista_de_comidas.add(Celeste(2620,520))
-        self.lista_de_comidas.add(Naranja3(2800,520))
-        self.lista_de_comidas.add(Violeta3(2620,380))
-        self.lista_de_comidas.add(Amarillo3(2800,380))
-        self.lista_de_comidas.add(Rojo3(3100,420))
-        self.lista_de_comidas.add(Azul3(3120,250))
-        self.lista_de_comidas.add(Rojo3(3550,70))
-        self.lista_de_comidas.add(Verde3(3500,70))
-        self.lista_de_comidas.add(Naranja(3400,500))
+        self.lista_de_comidas.add(Naranja2(2800,520))
+        self.lista_de_comidas.add(Violeta(2620,380))
+        self.lista_de_comidas.add(Amarillo(2800,380))
+        self.lista_de_comidas.add(Rojo2(3100,420))
+        self.lista_de_comidas.add(Azul2(3120,250))
+        self.lista_de_comidas.add(Rojo(3550,70))
+        self.lista_de_comidas.add(Verde2(3500,70))
+        self.lista_de_comidas.add(Naranja3(3400,500))
         #self.lista_de_comidas.add(Celeste(3600,500))
         self.lista_de_comidas.add(Amarillo(3800,500))
-        self.lista_de_comidas.add(Rojo(4155,120))
-        self.lista_de_comidas.add(Azul(4800,500))
-        self.lista_de_comidas.add(Verde(4600,200))
+        self.lista_de_comidas.add(Rojo2(4155,120))
+        self.lista_de_comidas.add(Azul2(4800,500))
+        self.lista_de_comidas.add(Verde3(4600,200))
         self.lista_de_comidas.add(Violeta(4900,50))
         self.lista_de_comidas.add(Amarillo(4950,50))
-        self.lista_de_comidas.add(Rojo(5150,500))
-        self.lista_de_comidas.add(Naranja(5000,500))
+        self.lista_de_comidas.add(Rojo2(5150,500))
+        self.lista_de_comidas.add(Naranja3(5000,500))
         self.lista_de_comidas.add(Rojo(5245,270))
-        self.lista_de_comidas.add(Violeta(5600,380))
-        self.lista_de_comidas.add(Verde(5500,520))
-        #self.lista_de_comidas.add(Celeste(5700,520))
-        self.lista_de_comidas.add(Azul(6300,430))
+        self.lista_de_comidas.add(Violeta3(5600,380))
+        self.lista_de_comidas.add(Verde2(5500,520))
+        self.lista_de_comidas.add(Azul(5700,520))
+        self.lista_de_comidas.add(Azul2(6300,430))
         self.lista_de_comidas.add(Amarillo(6500,430))
-        self.lista_de_comidas.add(Naranja(6500,430))
+        self.lista_de_comidas.add(Naranja3(6600,430))
         self.lista_de_comidas.add(Verde(6400,150))
-        self.lista_de_comidas.add(Rojo(7100,420))
-        self.lista_de_comidas.add(Azul(7300,520))
-        self.lista_de_comidas.add(Violeta(7500,250))
-        self.lista_de_comidas.add(Amarillo(7750,200))
-        #self.lista_de_comidas.add(Celeste(7799,520))
-        self.lista_de_comidas.add(Rojo(8180,230))
-        self.lista_de_comidas.add(Verde(8400,180))
+        self.lista_de_comidas.add(Rojo3(7100,420))
+        self.lista_de_comidas.add(Azul(7380,400))
+        self.lista_de_comidas.add(Violeta3(7500,250))
+        self.lista_de_comidas.add(Amarillo2(7750,200))
+        self.lista_de_comidas.add(Azul2(7799,520))
+        self.lista_de_comidas.add(Rojo2(8180,230))
+        self.lista_de_comidas.add(Verde2(8400,100))
         self.lista_de_comidas.add(Naranja(8600,300))
-        self.lista_de_comidas.add(Rojo(8800,300))
-        self.lista_de_comidas.add(Azul(9100,480))
-        self.lista_de_comidas.add(Violeta(9200,490))
+        self.lista_de_comidas.add(Rojo3(8800,300))
+        self.lista_de_comidas.add(Azul3(9100,480))
+        self.lista_de_comidas.add(Violeta2(9200,490))
+        self.lista_de_comidas.add(Verde3(9400,400))
+        self.lista_de_comidas.add(Naranja2(9500,300))
+        self.lista_de_comidas.add(Azul2(9600,400))
         
 
         #Artefactos
@@ -203,6 +206,16 @@ class Level_01(Level):
         block.rect.x = 12500
         block.rect.y = 320
         block.boundary_top = 320
+        block.boundary_bottom = 410
+        block.mover_y = 1
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.LADRILLO1)
+        block.rect.x = 12500
+        block.rect.y = 320
+        block.boundary_ = 320
         block.boundary_bottom = 410
         block.mover_y = 1
         block.player = self.player

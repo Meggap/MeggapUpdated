@@ -1,51 +1,37 @@
 import pygame
-
+import menu
 import constantes
 from nivel1 import Level_01
 from nivel2 import Level_02 
 
 from jugador import Player
-
-def main():
-    """ Programa principal """
-    pygame.init()
-    # Set the height and width of the screen
-    size = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]
-    screen = pygame.display.set_mode(size)
-    letraParaMarcador = pygame.font.Font(None,36)
-    pygame.display.set_caption("Meggap")
-    sonido=pygame.mixer.Sound("sonido/sonifofondoprovicional.ogg")
+from menu import cMenu, EVENT_CHANGE_STATE
+from string import center
+from funciones_spritesheet import SpriteSheet
+def jugar(screen):
+    sonido = pygame.mixer.Sound("sonido/sonifofondoprovicional.ogg")
     sonido.play()
-    # Create the player
+    letraParaMarcador = pygame.font.Font(None, 36) # Create the player
     player = Player()
-    
-    # Create all the levels     
+# Create all the levels
     level_list = []
     level_list.append(Level_01(player))
     level_list.append(Level_02(player))
-    
-    # Set the current level
+# Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
-
     active_sprite_list = pygame.sprite.Group()
     player.nivel = current_level
-    
     player.rect.x = 340
     player.rect.y = constantes.LARGO_PANTALLA - player.rect.height
     active_sprite_list.add(player)
-    
-
-    #Loop until the user clicks the close button.
-    done = False
-    # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
-    # -------- Main Program Loop -----------
+#Loop until the user clicks the close button.
+    done = False # Used to manage how fast the screen updates
+    clock = pygame.time.Clock() # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
                 done = True # Flag that we are done so we exit this loop
-
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     player.go_left()
@@ -53,61 +39,113 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
-                    
-
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.mover_x < 0:
                     player.stop()
                 if event.key == pygame.K_RIGHT and player.mover_x > 0:
                     player.stop()
-
+        
         # Update the jugador.
         active_sprite_list.update()
-
         # Update items in the level
         current_level.update()
-
         # If the jugador gets near the right side, shift the world left (-x)
         if player.rect.x >= 500:
             diff = player.rect.x - 500
             player.rect.x = 500
             current_level.shift_world(-diff)
-
         # If the jugador gets near the left side, shift the world right (+x)
         if player.rect.x <= 120:
             diff = 120 - player.rect.x
             player.rect.x = 120
             current_level.shift_world(diff)
-
         # If the jugador gets to the end of the level, go to the next level
         current_position = player.rect.x + current_level.world_shift
         #print current_position
         if current_position < current_level.level_limit:
             player.rect.x = 120
             """INSERTAR SONIDO DE FINAL DE LVL AQUI"""
-            if current_level_no < len(level_list)-1:
+            if current_level_no < len(level_list) - 1:
                 current_level_no += 1
                 current_level = level_list[current_level_no]
-                player.nivel = current_level
-        # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
+                player.nivel = current_level # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
-        text = letraParaMarcador.render("Notas: "+str(player.puntaje), 1 , constantes.NEGRO)
-        screen.blit(text, (650,0))
-        #sol = pygame.image.load("imagenes/sol.png").convert_alpha()
-        #sol.set_colorkey(constantes.NEGRO)
-        #screen.blit(sol, (10, 20))
-        # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+        text = letraParaMarcador.render("Notas: " + str(player.puntaje), 1, constantes.NEGRO)
+        screen.blit(text, (650, 0)) 
 
+        # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
         # Limit to 60 frames per second
         clock.tick(60)
-
-
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
 
-    # Be IDLE friendly. If you forget this line, the program will 'hang'
-    # on exit.
+def main():
+    """ Programa principal """
+    pygame.init()
+    # Set the height and width of the screen
+    size = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]
+    screen = pygame.display.set_mode(size)
+    
+    pygame.display.set_caption("Meggap")
+    
+    sprite_sheet = SpriteSheet("imagenes/metalerospritesheet.png")
+    metalero = sprite_sheet.get_image(0, 0, 36, 64)
+    sprite_sheet = SpriteSheet("imagenes/rastaspritesheet.png")
+    rasta = sprite_sheet.get_image(0,0,36,64)
+    sprite_sheet = SpriteSheet("imagenes/raperospritesheet.png")
+    rapero = sprite_sheet.get_image(0,0,36,64)
+    
+    
+    menuJuego = cMenu(50,50,20,5,"vertical",100,screen,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
+    menuJugador = cMenu(30, 350, 100, 5, "horizontal", 4, screen, [("Metalero",5,metalero),("Rastafari",6,rasta),("Rapero",7,rapero),("Volver",0,None)])
+    #Alineamos el menu
+    #"""menuPrueba = cMenu(x, y, h_pad, v_pad, orientation, number, background, buttonList)"""
+    menuJuego.set_center(True, True)
+    menuJuego.set_alignment("center", "center")
+    
+    estado = 0
+    estado_previo = 1 
+    
+    opcion =  [] 
+    
+    salir = False
+    
+    
+    while not salir:
+        if estado_previo != estado:
+            pygame.event.post(pygame.event.Event(menu.EVENT_CHANGE_STATE, key = 0))
+            estado_previo = estado
+        e = pygame.event.wait()
+        
+        if e.type == pygame.KEYDOWN or e.type == menu.EVENT_CHANGE_STATE:
+            if estado == 0:
+                opcion, estado = menuJuego.update(e,estado)
+            elif estado == 1:
+                screen.fill(constantes.NEGRO)
+                opcion, estado = menuJugador.update(e, estado)
+                pygame.display.flip()
+
+            elif estado == 2:
+                estado = 0
+            elif estado == 3:
+                estado = 3
+            elif estado == 5:
+                jugar(screen)
+            elif estado == 6:
+                jugar(screen)
+            elif estado == 7:
+                jugar(screen)
+
+            else:
+                salir = True
+            
+        if e.type == pygame.QUIT:
+            salir = True
+            
+        pygame.display.update(opcion)
+            
+    
     pygame.quit()
 
 if __name__ == "__main__":

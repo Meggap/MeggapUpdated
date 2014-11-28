@@ -1,5 +1,5 @@
 tipo,plataforma_x,plataforma_y
-platforms.PISO, 0, 580
+platforms.PISO,0, 580
 platforms.PISO, 6000, 580
 platforms.PISO, 12000, 580
 platforms.LADRILLO1, 560, 427
@@ -54,6 +54,8 @@ platforms.LADRILLO3, 11780, 480
 platforms.LADRILLO3, 11910, 480
 platforms.LADRILLO3, 12040, 480
 platforms.LADRILLO3, 12170, 480
-platforms.LADRILLO2, 12900, 370
-platforms.LADRILLO1, 13010, 310
-platforms.LADRILLO2, 13100, 300
+platforms.LADRILLO2, 12750, 370
+platforms.LADRILLO1, 19000, 310
+platforms.LADRILLO3, 13100, 250
+platforms.LADRILLO1, 13300, 280
+platforms.LADRILLO1, 13600, 310
