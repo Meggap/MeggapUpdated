@@ -8,11 +8,11 @@ from jugador import Player
 from menu import cMenu, EVENT_CHANGE_STATE
 from string import center
 from funciones_spritesheet import SpriteSheet
-def jugar(screen):
+def jugar(screen, jugador):
     sonido = pygame.mixer.Sound("sonido/sonifofondoprovicional.ogg")
     sonido.play()
     letraParaMarcador = pygame.font.Font(None, 36) # Create the player
-    player = Player()
+    player = Player(jugador)
 # Create all the levels
     level_list = []
     level_list.append(Level_01(player))
@@ -108,7 +108,7 @@ def main():
     estado_previo = 1 
     
     opcion =  [] 
-    
+    jugador = 1
     salir = False
     
     
@@ -131,11 +131,14 @@ def main():
             elif estado == 3:
                 estado = 3
             elif estado == 5:
-                jugar(screen)
+                jugador = 1
+                jugar(screen, jugador)
             elif estado == 6:
-                jugar(screen)
+                jugador = 2
+                jugar(screen, jugador)
             elif estado == 7:
-                jugar(screen)
+                jugador = 3
+                jugar(screen, jugador)
 
             else:
                 salir = True

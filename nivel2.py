@@ -19,24 +19,28 @@ class Level_02(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("imagenes/background_02.png").convert()
-        self.background.set_colorkey(constantes.BLANCO)
-        self.level_limit = -1000
+        self.background = pygame.image.load("imagenes/fondolvl2.png").convert()
+        self.level_limit = -35000
 
         # Array with type of platform, and x, y location of the platform.
-        level = [  ]
+        level = [ 
+                 [platforms.PISO, 0, 490]
+                  
+                  
+                  
+                  ]
 
 
         #Artefactos
-        botellas = pygame.image.load("imagenes/botellas.png").convert()
-        botellas.set_colorkey(constantes.BLANCO)
-        borracho = pygame.image.load("imagenes/borracho.png").convert()
-        borracho.set_colorkey(constantes.BLANCO)
-        farol = pygame.image.load("imagenes/farol.png").convert()
-        farol.set_colorkey(constantes.BLANCO)
-        self.background.blit(botellas, (700, 550))
-        self.background.blit(borracho, (800, 450))
-        self.background.blit(farol, (1000, 460))
+        #botellas = pygame.image.load("imagenes/botellas.png").convert()
+        #botellas.set_colorkey(constantes.BLANCO)
+        #borracho = pygame.image.load("imagenes/borracho.png").convert()
+        #borracho.set_colorkey(constantes.BLANCO)
+        #farol = pygame.image.load("imagenes/farol.png").convert()
+        #farol.set_colorkey(constantes.BLANCO)
+        #self.background.blit(botellas, (700, 550))
+        #self.background.blit(borracho, (800, 450))
+        #self.background.blit(farol, (1000, 460))
 
         # Go through the array above and add platforms
         for platform in level:

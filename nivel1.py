@@ -212,12 +212,12 @@ class Level_01(Level):
         block.nivel = self
         self.platform_list.add(block)
 
-        block = platforms.MovingPlatform(platforms.LADRILLO1)
-        block.rect.x = 12500
-        block.rect.y = 320
-        block.boundary_ = 320
-        block.boundary_bottom = 410
-        block.mover_y = 1
+        block = platforms.MovingPlatform(platforms.LADRILLO2)
+        block.rect.x = 14000
+        block.rect.y = 380
+        block.boundary_left= 14000
+        block.boundary_right = 14400
+        block.mover_x = 1
         block.player = self.player
         block.nivel = self
         self.platform_list.add(block)
