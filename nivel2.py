@@ -24,7 +24,13 @@ class Level_02(Level):
 
         # Array with type of platform, and x, y location of the platform.
         level = [ 
-                 [platforms.PISO, 0, 490]
+                 [platforms.PISO, -150, 490],
+                 [platforms.PISO, 4500, 490],
+                 [platforms.PISO, 10050, 490],
+                 [platforms.PISO, 16050, 490],
+                 [platforms.PISO, 22050, 490],
+                 [platforms.PISO, 28050, 490],
+                 [platforms.PISO, 34050, 490]
                   
                   
                   
@@ -49,6 +55,8 @@ class Level_02(Level):
             block.rect.y = platform[2]
             block.player = self.player
             self.platform_list.add(block)
+            
+
 
         # Add a custom moving platform
         #block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)

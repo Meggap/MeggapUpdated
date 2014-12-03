@@ -1,9 +1,10 @@
 import pygame
 import menu
 import constantes
+from tkMessageBox import *
 from nivel1 import Level_01
 from nivel2 import Level_02 
-
+import time
 from jugador import Player
 from menu import cMenu, EVENT_CHANGE_STATE
 from string import center
@@ -11,13 +12,15 @@ from funciones_spritesheet import SpriteSheet
 def jugar(screen, jugador):
     sonido = pygame.mixer.Sound("sonido/sonifofondoprovicional.ogg")
     sonido.play()
-    letraParaMarcador = pygame.font.Font(None, 36) # Create the player
+    letraParaMarcador = pygame.font.Font(None, 36)
+    letraTiempo = pygame.font.Font(None, 36)
+    # Create the player
     player = Player(jugador)
-# Create all the levels
+    # Create all the levels
     level_list = []
-    level_list.append(Level_01(player))
+    #level_list.append(Level_01(player))
     level_list.append(Level_02(player))
-# Set the current level
+    # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
     active_sprite_list = pygame.sprite.Group()
@@ -25,9 +28,12 @@ def jugar(screen, jugador):
     player.rect.x = 340
     player.rect.y = constantes.LARGO_PANTALLA - player.rect.height
     active_sprite_list.add(player)
-#Loop until the user clicks the close button.
+    #Loop until the user clicks the close button.
     done = False # Used to manage how fast the screen updates
-    clock = pygame.time.Clock() # -------- Main Program Loop -----------
+    clock = pygame.time.Clock()
+    
+    starting_point = time.time() + 250
+    # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
@@ -71,15 +77,23 @@ def jugar(screen, jugador):
                 player.nivel = current_level # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
-        text = letraParaMarcador.render("Notas: " + str(player.puntaje), 1, constantes.NEGRO)
-        screen.blit(text, (650, 0)) 
-
+        text = letraParaMarcador.render("Puntos: " + str(player.puntaje), 1, constantes.NEGRO)
+        screen.blit(text, (520, 0)) 
+        
+        elapsed_time = starting_point - time.time ()
+        elapsed_time_int = int(elapsed_time)
+        textotiempo = letraTiempo.render("Tiempo : "+ str(elapsed_time_int), 1, constantes.NEGRO)
+        screen.blit(textotiempo, (640,0))
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
         # Limit to 60 frames per second
         clock.tick(60)
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
-
+        
+        if elapsed_time_int <= 0:
+            showerror("","GAME OVER")
+            done = True
+    pygame.quit()
 def main():
     """ Programa principal """
     pygame.init()
