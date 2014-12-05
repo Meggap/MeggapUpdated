@@ -5,6 +5,9 @@ import platforms
 from levels import Level
 from comida import *
 import csv
+from enemigos2 import MovingPlatform, Enemigo
+import enemigos2
+
 # Create platforms for the level
 class Level_01(Level):
     """ Definition for level 1. """
@@ -22,6 +25,17 @@ class Level_01(Level):
         #sonido.play()
         self.background.set_colorkey(constantes.BLANCO)
         self.level_limit = -15100
+        
+        ene = enemigos2.MovingPlatform(platforms.LADRILLO2)
+        ene.rect.x = 3099
+        ene.rect.y = constantes.LARGO_PANTALLA - player.rect.height
+        ene.boundary_left = 0
+        ene.boundary_right = 800
+        ene.mover_x = -1
+        ene.player = self.player
+        ene.nivel = self
+        
+        self.enemy_list.add(ene)
         
         #COMIDAS
         

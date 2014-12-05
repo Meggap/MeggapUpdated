@@ -33,7 +33,6 @@ class Level_02(Level):
                  [platforms.PISO, 34050, 490]
                   
                   
-                  
                   ]
 
 
