@@ -1,7 +1,7 @@
 import pygame
 import menu
 import constantes
-from tkMessageBox import *
+
 from nivel1 import Level_01
 from nivel2 import Level_02 
 import time
@@ -14,6 +14,7 @@ def jugar(screen, jugador):
     sonido.play()
     letraParaMarcador = pygame.font.Font(None, 36)
     letraTiempo = pygame.font.Font(None, 36)
+    letraVida = pygame.font.Font(None,36)
     # Create the player
     player = Player(jugador)
     # Create all the levels
@@ -78,12 +79,15 @@ def jugar(screen, jugador):
         current_level.draw(screen)
         active_sprite_list.draw(screen)
         text = letraParaMarcador.render("Puntos: " + str(player.puntaje), 1, constantes.NEGRO)
-        screen.blit(text, (520, 0)) 
+        screen.blit(text, (510, 0)) 
         
         elapsed_time = starting_point - time.time ()
         elapsed_time_int = int(elapsed_time)
-        textotiempo = letraTiempo.render("Tiempo : "+ str(elapsed_time_int), 1, constantes.NEGRO)
+        textotiempo = letraTiempo.render("Tiempo: "+ str(elapsed_time_int), 1, constantes.NEGRO)
         screen.blit(textotiempo, (640,0))
+        
+        marcadorVida = letraVida.render("Vida: " + str(player.vida), 1, constantes.ROJO)
+        screen.blit(marcadorVida, (625,575))
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
         # Limit to 60 frames per second
         clock.tick(60)
@@ -91,13 +95,13 @@ def jugar(screen, jugador):
         pygame.display.flip()
         
         if elapsed_time_int <= 0:
-            showerror("","GAME OVER")
+
             done = True
     pygame.quit()
 def main():
     """ Programa principal """
     pygame.init()
-    # Set the height and width of the screen
+    # Set the height and width of the screen6 +
     size = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]
     screen = pygame.display.set_mode(size)
     

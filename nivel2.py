@@ -19,7 +19,7 @@ class Level_02(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("imagenes/fondolvl2.png").convert()
+        self.background = pygame.image.load("imagenes/fondonivel2.png").convert()
         self.level_limit = -35000
 
         # Array with type of platform, and x, y location of the platform.

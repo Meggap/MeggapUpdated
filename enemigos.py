@@ -3,19 +3,9 @@ Module for managing platforms.
 """
 import pygame
 
-from funciones_spritesheet import SpriteSheetPlataformas, SpriteSheetNotas
-
-# These constantes define our platform types:
-#   Name of file
-#   X location of sprite
-#   Y location of sprite
-#   Width of sprite
-#   Height of sprite
-
-LADRILLO1            = (0, 0, 65, 40)
-LADRILLO2           = (65, 0, 90, 33)
-LADRILLO3          = (0, 39, 130, 24)
-PISO               = (0,104,6000,33)
+from funciones_spritesheet import *
+import jugador
+from jugador import Player
 
 
 class Enemigo(pygame.sprite.Sprite):
@@ -88,44 +78,62 @@ class MovingPlatform(Enemigo):
             moving platforms have clearance to push the jugador around
             or add code to handle what happens if they don't. """
 
-        self.mover_x = -2
+        self.calc_grav()
 
-       # Move left/right
+        #self.mover_x = -2
+
+        # Move left/right
         self.rect.x += self.mover_x
 
-        pos = self.rect.x + self.nivel.world_shift
+        pos = self.rect.x
         frame = (pos // 30) % len(self.jugador_frame_izq)
         self.image = self.jugador_frame_izq[frame]
 
-        # See if we hit the jugador
+
+        #ACA ES CUANDO CHOCAMOS CON EL ENEMIGO. HACER LAS ACCIONES QUE SE QUIERAN.
+        # Primera accion: Eliminar el enemigo
+        # Segunda accion: Quitar puntos.
         hit = pygame.sprite.collide_rect(self, self.player)
         if hit:
-            # We did hit the jugador. Shove the jugador around and
-            # assume he/she won't hit anything else.
+            self.kill()
+            self.player.vida -= 10
 
-            # If we are moving right, set our right side
-            # to the left side of the item we hit
-            if self.mover_x < 0:
-                self.player.rect.right = self.rect.left
-            else:
-                # Otherwise if we are moving left, do the opposite.
-                self.player.rect.left = self.rect.right
 
-        # Move up/down
+        # Verficiamos si colisionamos con alguna plataforma
+        lista_de_bloques_colisionados = pygame.sprite.spritecollide(self, self.nivel.platform_list, False)
+        for block in lista_de_bloques_colisionados:
+            if self.mover_x > 0:
+                self.rect.right = block.rect.left
+            elif self.mover_x < 0:
+                self.rect.left = block.rect.right
+ 
         self.rect.y += self.mover_y
 
-        # Check and see if we the jugador
-        hit = pygame.sprite.collide_rect(self, self.player)
-        if hit:
-            # We did hit the jugador. Shove the jugador around and
-            # assume he/she won't hit anything else.
+        lista_de_bloques_colisionados = pygame.sprite.spritecollide(self, self.nivel.platform_list, False)
+        for block in lista_de_bloques_colisionados:
+            if self.mover_y > 0:
+                self.rect.bottom = block.rect.top
+            elif self.mover_y < 0:
+                self.rect.top = block.rect.bottom
 
-            # Reset our position based on the top/bottom of the object.
-            if self.mover_y < 0:
-                self.player.rect.bottom = self.rect.top
-            else:
-                self.player.rect.top = self.rect.bottom
+            self.mover_y = 0
 
+            if isinstance(block, MovingPlatform):
+                self.rect.x += block.mover_x
+                
+    def calc_grav(self):
+        """ Calcula el efecto de la gravedad. """
+        if self.mover_y == 0:
+            self.mover_y = 2
+        else:
+            self.mover_y += .34
+
+        # Verificamos si estamos en el suelo.
+        if self.rect.y >= constantes.LARGO_PANTALLA - self.rect.height and self.mover_y >= 1:
+            self.mover_y = 1
+            self.rect.y = constantes.LARGO_PANTALLA - self.rect.height
+            
+            
 
 
 

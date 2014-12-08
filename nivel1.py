@@ -5,8 +5,8 @@ import platforms
 from levels import Level
 from comida import *
 import csv
-from enemigos2 import MovingPlatform, Enemigo
-import enemigos2
+from enemigos import MovingPlatform, Enemigo
+import enemigos
 
 # Create platforms for the level
 class Level_01(Level):
@@ -26,9 +26,9 @@ class Level_01(Level):
         self.background.set_colorkey(constantes.BLANCO)
         self.level_limit = -15100
         
-        ene = enemigos2.MovingPlatform(platforms.LADRILLO2)
-        ene.rect.x = 3099
-        ene.rect.y = constantes.LARGO_PANTALLA - player.rect.height
+        ene = enemigos.MovingPlatform(platforms.LADRILLO2)
+        ene.rect.x = 2500
+        ene.rect.y = 200
         ene.boundary_left = 0
         ene.boundary_right = 800
         ene.mover_x = -1
@@ -91,12 +91,6 @@ class Level_01(Level):
         self.lista_de_comidas.add(Azul2(9600,400))
         
 
-        #Artefactos
-        autorojo = pygame.image.load("imagenes/auto3.png").convert()
-        autorojo.set_colorkey(constantes.BLANCO)
-        #autorojo = pygame.transform.rotate(autorojo,90)
-        self.background.blit(autorojo, (1980, 500))
-
         # ubicacion de las plataformas.
         level = [  ]
         with open ("parametros/nivel1.csv", "rb") as archivo:
@@ -114,7 +108,7 @@ class Level_01(Level):
         level = [ [platforms.PISO, 100, 0], 
                  [platforms.LADRILLO3, 1550, 444],
                  [platforms.LADRILLO3, 1550, 367],
-                 [platforms.LADRILLO3, 1880, 367],
+                 [platforms.LADRILLO3, 1890, 367],
                  [platforms.LADRILLO3, 4300, 444],
                  [platforms.LADRILLO3, 4300, 380],
                  [platforms.LADRILLO3, 4300, 300],
