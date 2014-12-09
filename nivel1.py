@@ -88,7 +88,21 @@ class Level_01(Level):
         self.lista_de_comidas.add(Violeta2(9200,490))
         self.lista_de_comidas.add(Verde3(9400,400))
         self.lista_de_comidas.add(Naranja2(9500,300))
-        self.lista_de_comidas.add(Azul2(9600,400))
+        self.lista_de_comidas.add(Azul2(9650,450))
+        self.lista_de_comidas.add(Violeta3(9800,500))
+        self.lista_de_comidas.add(Verde(10050,390))
+        self.lista_de_comidas.add(Naranja2(10265,300))
+        self.lista_de_comidas.add(Rojo3(10600,200))
+        self.lista_de_comidas.add(Azul3(11200,230))
+        self.lista_de_comidas.add(Amarillo2(11500,200))
+        self.lista_de_comidas.add(Verde(11800,180))
+        self.lista_de_comidas.add(Rojo2(12050,180))
+        self.lista_de_comidas.add(Naranja(11200,440))
+        self.lista_de_comidas.add(Verde3(11500,420))
+        self.lista_de_comidas.add(Rojo3(11800,400))
+        self.lista_de_comidas.add(Violeta3(12050,400))
+        self.lista_de_comidas.add(Azul(12550,250))
+        self.lista_de_comidas.add(Azul3(12550,250))
         
 
         # ubicacion de las plataformas.

@@ -21,34 +21,34 @@ class Enemigo(pygame.sprite.Sprite):
             code. """
         pygame.sprite.Sprite.__init__(self)
 
-        sprite_sheet = SpriteSheetNotas("imagenes/rastasht.png")
+        sprite_sheet = SpriteSheetNotas("imagenes/enemigo.png")
             
         #Recorte
-        image = sprite_sheet.get_image(0, 0, 46, 81)
+        image = sprite_sheet.get_image(0, 0, 47, 175)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(46, 0, 46, 81)
+        image = sprite_sheet.get_image(47, 0, 47, 175)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(92, 0, 46, 81)
+        image = sprite_sheet.get_image(93, 0, 47, 175)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(138, 0, 46, 81)
+        image = sprite_sheet.get_image(139, 0, 47, 175)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(183, 0, 45, 81)
+        image = sprite_sheet.get_image(184, 0, 47, 175)
         self.jugador_frame_der.append(image)
         
         #Rotacion 
-        image = sprite_sheet.get_image(0, 0, 46, 81)
+        image = sprite_sheet.get_image(0, 0, 47, 175)
         image = pygame.transform.flip(image, True, False)
         self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(46, 0, 46, 81)
+        image = sprite_sheet.get_image(47, 0, 47, 175)
         image = pygame.transform.flip(image, True, False)
         self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(92, 0, 46, 81)
+        image = sprite_sheet.get_image(93, 0, 47, 175)
         image = pygame.transform.flip(image, True, False)
         self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(138, 0, 46, 81)
+        image = sprite_sheet.get_image(139, 0, 47, 175)
         image = pygame.transform.flip(image, True, False)
         self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(183, 0, 45, 81)
+        image = sprite_sheet.get_image(184, 0, 47, 175)
 
         self.jugador_frame_izq.append(image)
         self.image = self.jugador_frame_izq[0]
