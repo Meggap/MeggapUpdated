@@ -43,9 +43,7 @@ class Player(pygame.sprite.Sprite):
         
         if jugador == 1:
             sprite_sheet = SpriteSheetNotas("imagenes/metalerospritesheet.png")
-        elif jugador == 2:
-            sprite_sheet = SpriteSheetNotas("imagenes/rastasht.png")
-            #Recorte
+            
             image = sprite_sheet.get_image(0, 0, 46, 81)
             self.jugador_frame_der.append(image)
             image = sprite_sheet.get_image(46, 0, 46, 81)
@@ -72,9 +70,70 @@ class Player(pygame.sprite.Sprite):
             self.jugador_frame_izq.append(image)
             image = sprite_sheet.get_image(183, 0, 45, 81)
             image = pygame.transform.flip(image, True, False)
-        elif jugador == 3:
-            sprite_sheet = SpriteSheetNotas("imagenes/raperospritesheet.png")
             
+        elif jugador == 2:
+            sprite_sheet = SpriteSheetNotas("imagenes/rastasht.png")
+            
+            image = sprite_sheet.get_image(0, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(46, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(92, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(138, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(183, 0, 45, 81)
+            self.jugador_frame_der.append(image)
+            
+            #Rotacion 
+            image = sprite_sheet.get_image(0, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(46, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(92, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(138, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(183, 0, 45, 81)
+            image = pygame.transform.flip(image, True, False)
+            
+        elif jugador == 3:
+            sprite_sheet = SpriteSheetNotas("imagenes/raperosht.png")
+
+            image = sprite_sheet.get_image(0, 0, 46, 80)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(46, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(92, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(139, 0, 46, 81)
+            self.jugador_frame_der.append(image)
+            image = sprite_sheet.get_image(185, 0, 45, 81)
+            self.jugador_frame_der.append(image)
+            
+            #Rotacion 
+            image = sprite_sheet.get_image(0, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(46, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(92, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(139, 0, 46, 81)
+            image = pygame.transform.flip(image, True, False)
+            self.jugador_frame_izq.append(image)
+            image = sprite_sheet.get_image(185, 0, 45, 81)
+            image = pygame.transform.flip(image, True, False)
+            
+            
+            
+
         self.jugador_frame_izq.append(image)
         self.image = self.jugador_frame_der[0]
         self.rect = self.image.get_rect()

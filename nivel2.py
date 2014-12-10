@@ -7,6 +7,7 @@ Created on 15/09/2014
 import pygame
 import constantes
 import platforms
+import platforms2
 from levels import Level
 
 # Create platforms for the level
@@ -32,22 +33,10 @@ class Level_02(Level):
                  [platforms.PISO, 28050, 490],
                  [platforms.PISO, 34050, 490]
                   
-                  
                   ]
+           # Go through the array above and add platforms
 
 
-        #Artefactos
-        #botellas = pygame.image.load("imagenes/botellas.png").convert()
-        #botellas.set_colorkey(constantes.BLANCO)
-        #borracho = pygame.image.load("imagenes/borracho.png").convert()
-        #borracho.set_colorkey(constantes.BLANCO)
-        #farol = pygame.image.load("imagenes/farol.png").convert()
-        #farol.set_colorkey(constantes.BLANCO)
-        #self.background.blit(botellas, (700, 550))
-        #self.background.blit(borracho, (800, 450))
-        #self.background.blit(farol, (1000, 460))
-
-        # Go through the array above and add platforms
         for platform in level:
             block = platforms.Platform(platform[0])
             block.rect.x = platform[1]
@@ -55,8 +44,44 @@ class Level_02(Level):
             block.player = self.player
             self.platform_list.add(block)
             
+            
+            
+            
+            
+            
+        level = [ 
+                 [platforms2.TORRE, 500, 420],
+                 [platforms2.BASICO1, 700, 350],
+                 [platforms2.LARGO1, 900, 400],
+                 [platforms2.MEDIANO1, 1000, 400],
 
+                  
+                  ]
+                         
+            
+        for platform in level:
+            block = platforms2.Platform2(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.platform_list.add(block)
+            
 
+        level = [ [platforms.PISO, 100, 0]
+
+                  ]
+
+        # Go through the array above and add platforms
+        for platform in level:
+            block = platforms.VerticalPlatform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.platform_list.add(block)
+            
+            
+            
+            
         # Add a custom moving platform
         #block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
         #block.rect.x = 1500

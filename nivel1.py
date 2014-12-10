@@ -27,10 +27,10 @@ class Level_01(Level):
         self.level_limit = -15100
         
         ene = enemigos.MovingPlatform(platforms.LADRILLO2)
-        ene.rect.x = 2500
-        ene.rect.y = 200
-        ene.boundary_left = 0
-        ene.boundary_right = 800
+        ene.rect.x = 300
+        ene.rect.y = 400
+        ene.boundary_left = 100
+        ene.boundary_right = 300
         ene.mover_x = -1
         ene.player = self.player
         ene.nivel = self

@@ -14,6 +14,7 @@ class Enemigo(pygame.sprite.Sprite):
     jugador_frame_izq = []
     jugador_frame_der = []
     
+    izquierda = True
 
     def __init__(self, sprite_sheet_data):
         """ Platform constructor. Assumes constructed with user passing in
@@ -86,8 +87,14 @@ class MovingPlatform(Enemigo):
         self.rect.x += self.mover_x
 
         pos = self.rect.x
-        frame = (pos // 30) % len(self.jugador_frame_izq)
-        self.image = self.jugador_frame_izq[frame]
+        
+        if not(self.izquierda):
+            frame = (pos // 30) % len(self.jugador_frame_der)
+            self.image = self.jugador_frame_der[frame]
+            
+        else:
+            frame = (pos // 30) % len(self.jugador_frame_izq)
+            self.image = self.jugador_frame_izq[frame]
 
 
         #ACA ES CUANDO CHOCAMOS CON EL ENEMIGO. HACER LAS ACCIONES QUE SE QUIERAN.
@@ -120,6 +127,13 @@ class MovingPlatform(Enemigo):
 
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.mover_x
+        if self.rect.bottom > self.boundary_bottom or self.rect.top < self.boundary_top:
+            self.mover_y *= -1
+
+        cur_pos = self.rect.x - self.nivel.world_shift
+        if cur_pos < self.boundary_left or cur_pos > self.boundary_right:
+            self.mover_x *= -1
+            self.izquierda = not (self.izquierda)
                 
     def calc_grav(self):
         """ Calcula el efecto de la gravedad. """

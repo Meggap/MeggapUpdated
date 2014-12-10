@@ -9,17 +9,19 @@ from jugador import Player
 from menu import cMenu, EVENT_CHANGE_STATE
 from string import center
 from funciones_spritesheet import SpriteSheet
+from funciones_spritesheet import SpriteSheetNotas
 def jugar(screen, jugador):
     sonido = pygame.mixer.Sound("sonido/sonifofondoprovicional.ogg")
     sonido.play()
     letraParaMarcador = pygame.font.Font(None, 36)
     letraTiempo = pygame.font.Font(None, 36)
     letraVida = pygame.font.Font(None,36)
+
     # Create the player
     player = Player(jugador)
     # Create all the levels
     level_list = []
-    level_list.append(Level_01(player))
+    #level_list.append(Level_01(player))
     level_list.append(Level_02(player))
     # Set the current level
     current_level_no = 0
@@ -78,16 +80,16 @@ def jugar(screen, jugador):
                 player.nivel = current_level # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
-        text = letraParaMarcador.render("Puntos: " + str(player.puntaje), 1, constantes.NEGRO)
-        screen.blit(text, (510, 0)) 
+        text = letraParaMarcador.render("Puntos: " + str(player.puntaje), 1, constantes.ROJO)
+        screen.blit(text, (100, 0)) 
         
         elapsed_time = starting_point - time.time ()
         elapsed_time_int = int(elapsed_time)
-        textotiempo = letraTiempo.render("Tiempo: "+ str(elapsed_time_int), 1, constantes.NEGRO)
-        screen.blit(textotiempo, (640,0))
+        textotiempo = letraTiempo.render("Tiempo: "+ str(elapsed_time_int), 1, constantes.ROJO)
+        screen.blit(textotiempo, (255,0))
         
         marcadorVida = letraVida.render("Vida: " + str(player.vida), 1, constantes.ROJO)
-        screen.blit(marcadorVida, (625,575))
+        screen.blit(marcadorVida, (450,0))
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
         # Limit to 60 frames per second
         clock.tick(60)
@@ -107,17 +109,23 @@ def main():
     
     pygame.display.set_caption("Meggap")
     
-    sprite_sheet = SpriteSheet("imagenes/metalerospritesheet.png")
-    metalero = sprite_sheet.get_image(0, 0, 36, 64)
-    sprite_sheet = SpriteSheet("imagenes/rastaspritesheet.png")
-    rasta = sprite_sheet.get_image(0,0,36,64)
-    sprite_sheet = SpriteSheet("imagenes/raperospritesheet.png")
-    rapero = sprite_sheet.get_image(0,0,36,64)
+    sprite_sheet = SpriteSheetNotas("imagenes/metalerospritesheet.png")
+    metalero = sprite_sheet.get_image(0,0,36,81)
+    sprite_sheet = SpriteSheetNotas("imagenes/rastasht.png")
+    rasta = sprite_sheet.get_image(0,0,36,81)
+    sprite_sheet = SpriteSheetNotas("imagenes/raperosht.png")
+    rapero = sprite_sheet.get_image(0,0,38,81)
+    logo = pygame.image.load("imagenes/meggap.png").convert()
     
-    
-    menuJuego = cMenu(50,50,20,5,"vertical",100,screen,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
+    menuJuego = cMenu(50,50,1,1,"vertical",100,screen,[("Logo",20,logo),("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
     menuJugador = cMenu(30, 350, 100, 5, "horizontal", 4, screen, [("Metalero",5,metalero),("Rastafari",6,rasta),("Rapero",7,rapero),("Volver",0,None)])
+
+    
+    
     #Alineamos el menu
+    
+    
+    
     #"""menuPrueba = cMenu(x, y, h_pad, v_pad, orientation, number, background, buttonList)"""
     menuJuego.set_center(True, True)
     menuJuego.set_alignment("center", "center")
@@ -138,7 +146,8 @@ def main():
         
         if e.type == pygame.KEYDOWN or e.type == menu.EVENT_CHANGE_STATE:
             if estado == 0:
-                opcion, estado = menuJuego.update(e,estado)
+                opcion, estado = menuJuego.update(e,estado) 
+
             elif estado == 1:
                 screen.fill(constantes.NEGRO)
                 opcion, estado = menuJugador.update(e, estado)
