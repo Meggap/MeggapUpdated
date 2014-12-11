@@ -24,18 +24,48 @@ class Level_01(Level):
         #sonido=pygame.mixer.Sound("")
         #sonido.play()
         self.background.set_colorkey(constantes.BLANCO)
-        self.level_limit = -15100
+        self.level_limit = -14000
         
-        ene = enemigos.MovingPlatform(platforms.LADRILLO2)
-        ene.rect.x = 300
-        ene.rect.y = 400
-        ene.boundary_left = 100
-        ene.boundary_right = 300
-        ene.mover_x = -1
+        ene = enemigos.MovingPlatform()
+        ene.rect.x = 1000
+        ene.rect.y = 410
+        ene.boundary_left = 1000
+        ene.boundary_right = 1500
+        ene.mover_x = 2
         ene.player = self.player
         ene.nivel = self
         
+        ene1 = enemigos.MovingPlatform()
+        ene1.rect.x = 3950
+        ene1.rect.y = 410
+        ene1.boundary_left = 3950
+        ene1.boundary_right = 4250
+        ene1.mover_x = 2
+        ene1.player = self.player
+        ene1.nivel = self
+
+        ene2 = enemigos.MovingPlatform()
+        ene2.rect.x = 6100
+        ene2.rect.y = 410
+        ene2.boundary_left = 6100
+        ene2.boundary_right = 6700
+        ene2.mover_x = 3
+        ene2.player = self.player
+        ene2.nivel = self
+        
+        ene3 = enemigos.MovingPlatform()
+        ene3.rect.x = 11800
+        ene3.rect.y = 390
+        ene3.boundary_left = 11800
+        ene3.boundary_right = 12100
+        ene3.mover_x = 2
+        ene3.player = self.player
+        ene3.nivel = self
+        
         self.enemy_list.add(ene)
+        self.enemy_list.add(ene1)
+        self.enemy_list.add(ene2)
+        self.enemy_list.add(ene3)
         
         #COMIDAS
         
@@ -101,9 +131,17 @@ class Level_01(Level):
         self.lista_de_comidas.add(Verde3(11500,420))
         self.lista_de_comidas.add(Rojo3(11800,400))
         self.lista_de_comidas.add(Violeta3(12050,400))
-        self.lista_de_comidas.add(Azul(12550,250))
-        self.lista_de_comidas.add(Azul3(12550,250))
+        self.lista_de_comidas.add(Verde2(12550,250))
+        self.lista_de_comidas.add(Azul3(12800,250))
+        self.lista_de_comidas.add(Naranja(13150,150))
+        self.lista_de_comidas.add(Rojo3(13400,200))
+        self.lista_de_comidas.add(Amarillo(13620,250))
+        self.lista_de_comidas.add(Azul3(13850,350))
+        self.lista_de_comidas.add(Verde(14300,250))
+        self.lista_de_comidas.add(Violeta2(14370,250))
+        self.lista_de_comidas.add(ClaveSol(14800,400))
         
+    
 
         # ubicacion de las plataformas.
         level = [  ]

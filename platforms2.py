@@ -38,7 +38,7 @@ class Platform2(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
 
-class MovingPlatform(Platform2):
+class MovingPlatform2(Platform2):
     """ This is a fancier platform that can actually move. """
     mover_x = 0
     mover_y = 0

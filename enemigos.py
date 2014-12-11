@@ -1,5 +1,5 @@
 """
-Module for managing platforms.
+Enemigos
 """
 import pygame
 
@@ -9,51 +9,54 @@ from jugador import Player
 
 
 class Enemigo(pygame.sprite.Sprite):
-    """ Platform the user can jump on """
+
 
     jugador_frame_izq = []
     jugador_frame_der = []
     
     izquierda = True
 
-    def __init__(self, sprite_sheet_data):
-        """ Platform constructor. Assumes constructed with user passing in
-            an array of 5 numbers like what's defined at the top of this
-            code. """
+    def __init__(self):
+
         pygame.sprite.Sprite.__init__(self)
 
         sprite_sheet = SpriteSheetNotas("imagenes/enemigo.png")
             
         #Recorte
-        image = sprite_sheet.get_image(0, 0, 47, 175)
+        image = sprite_sheet.get_image(0, 0, 49, 81)
+        image = pygame.transform.flip(image, True, False)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(47, 0, 47, 175)
+        image = sprite_sheet.get_image(48, 0, 49, 81)
+        image = pygame.transform.flip(image, True, False)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(93, 0, 47, 175)
+        image = sprite_sheet.get_image(98, 0, 49, 81)
+        image = pygame.transform.flip(image, True, False)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(139, 0, 47, 175)
+        image = sprite_sheet.get_image(149, 0, 49, 81)
+        image = pygame.transform.flip(image, True, False)
         self.jugador_frame_der.append(image)
-        image = sprite_sheet.get_image(184, 0, 47, 175)
+        image = sprite_sheet.get_image(199, 0, 49, 81)
+        image = pygame.transform.flip(image, True, False)
         self.jugador_frame_der.append(image)
         
         #Rotacion 
-        image = sprite_sheet.get_image(0, 0, 47, 175)
-        image = pygame.transform.flip(image, True, False)
-        self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(47, 0, 47, 175)
-        image = pygame.transform.flip(image, True, False)
-        self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(93, 0, 47, 175)
-        image = pygame.transform.flip(image, True, False)
-        self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(139, 0, 47, 175)
-        image = pygame.transform.flip(image, True, False)
-        self.jugador_frame_izq.append(image)
-        image = sprite_sheet.get_image(184, 0, 47, 175)
+        image = sprite_sheet.get_image(0, 0, 49, 81)
 
         self.jugador_frame_izq.append(image)
+        image = sprite_sheet.get_image(49, 0, 49, 81)
+
+        self.jugador_frame_izq.append(image)
+        image = sprite_sheet.get_image(97, 0, 48, 81)
+
+        self.jugador_frame_izq.append(image)
+        image = sprite_sheet.get_image(149, 0, 49, 81)
+
+        self.jugador_frame_izq.append(image)
+        image = sprite_sheet.get_image(199, 0, 49, 81)
+
+
+        
         self.image = self.jugador_frame_izq[0]
-
         self.rect = self.image.get_rect()
 
 
@@ -87,7 +90,7 @@ class MovingPlatform(Enemigo):
         self.rect.x += self.mover_x
 
         pos = self.rect.x
-        
+
         if not(self.izquierda):
             frame = (pos // 30) % len(self.jugador_frame_der)
             self.image = self.jugador_frame_der[frame]
@@ -95,7 +98,6 @@ class MovingPlatform(Enemigo):
         else:
             frame = (pos // 30) % len(self.jugador_frame_izq)
             self.image = self.jugador_frame_izq[frame]
-
 
         #ACA ES CUANDO CHOCAMOS CON EL ENEMIGO. HACER LAS ACCIONES QUE SE QUIERAN.
         # Primera accion: Eliminar el enemigo
@@ -127,14 +129,12 @@ class MovingPlatform(Enemigo):
 
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.mover_x
-        if self.rect.bottom > self.boundary_bottom or self.rect.top < self.boundary_top:
-            self.mover_y *= -1
-
+                
         cur_pos = self.rect.x - self.nivel.world_shift
         if cur_pos < self.boundary_left or cur_pos > self.boundary_right:
             self.mover_x *= -1
             self.izquierda = not (self.izquierda)
-                
+        
     def calc_grav(self):
         """ Calcula el efecto de la gravedad. """
         if self.mover_y == 0:
@@ -146,8 +146,3 @@ class MovingPlatform(Enemigo):
         if self.rect.y >= constantes.LARGO_PANTALLA - self.rect.height and self.mover_y >= 1:
             self.mover_y = 1
             self.rect.y = constantes.LARGO_PANTALLA - self.rect.height
-            
-            
-
-
-

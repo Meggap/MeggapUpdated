@@ -61,5 +61,7 @@ platforms.LADRILLO3, 13100, 250
 platforms.LADRILLO1, 13400, 280
 platforms.LADRILLO1, 13600, 310
 platforms.LADRILLO1, 13850, 400
-platforms.LADRILLO3, 14600, 350
+platforms.LADRILLO3, 14600, 450
+platforms.LADRILLO2, 14920, 450
+
 
