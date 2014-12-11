@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
     # -- Atributos
     mover_x = 0
     mover_y = 0
-    vida = 100
+    vida = 60
     # Estas listas definen todas las imagenes de nuestro jugador.
     jugador_frame_izq = []
     jugador_frame_der = []
@@ -226,10 +226,6 @@ class Player(pygame.sprite.Sprite):
         self.mover_x = 6
         self.direccion = "R"
         
-    def go_right_PROGRAMA(self):
-        """ Se llama cuando movemos hacia la der. """
-        self.mover_x = 200
-        self.direccion = "R"
 
     def stop(self):
         """ Se llama cuando soltamos la tecla. """

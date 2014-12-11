@@ -23,7 +23,7 @@ def jugar(screen, jugador):
     player = Player(jugador)
     # Create all the levels
     level_list = []
-    #level_list.append(Level_01(player))
+    level_list.append(Level_01(player))
     level_list.append(Level_02(player))
     # Set the current level
     current_level_no = 0
@@ -37,7 +37,7 @@ def jugar(screen, jugador):
     done = False # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
     
-    starting_point = time.time() + 500
+    starting_point = time.time() + 400
     # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get(): # User did something
@@ -50,8 +50,6 @@ def jugar(screen, jugador):
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
-                if event.key == pygame.K_a:
-                    player.go_right_PROGRAMA()
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.mover_x < 0:
                     player.stop()

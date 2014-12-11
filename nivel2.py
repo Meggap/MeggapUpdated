@@ -9,7 +9,8 @@ import constantes
 import platforms
 import platforms2
 from levels import Level
-
+from comida import *
+import enemigos
 # Create platforms for the level
 class Level_02(Level):
     """ Definition for level 2. """
@@ -21,8 +22,31 @@ class Level_02(Level):
         Level.__init__(self, player)
 
         self.background = pygame.image.load("imagenes/fondonivel2.png").convert()
-        self.level_limit = -35000
+        self.level_limit = -32000
 
+        # Enemigos
+        #ene = enemigos.MovingPlatform()
+        #ene.rect.x = 2610
+        #ene.rect.y = 390
+        #ene.boundary_left = 
+        #ene.boundary_right = 2680
+        #ene.mover_x = 1
+        #ene.player = self.player
+        #ene.nivel = self
+        
+        #self.enemy_list.add(ene)
+
+        #COMIDAS
+        
+        self.lista_de_comidas.add(Negro(620,380))
+        self.lista_de_comidas.add(Verde2(1250,150))
+        self.lista_de_comidas.add(Azul3(2300,150))
+        self.lista_de_comidas.add(Rojo2(2300,410))
+        self.lista_de_comidas.add(Violeta(2650,100))
+        self.lista_de_comidas.add(Naranja(2660,350))
+        self.lista_de_comidas.add(Azul(3000,420))
+        self.lista_de_comidas.add(Amarillo2(3400,420))
+        
         # Array with type of platform, and x, y location of the platform.
         level = [ 
                  [platforms.PISO, -5850, 490],
@@ -140,7 +164,38 @@ class Level_02(Level):
                  [platforms2.TORRE, 23600, 288],
                  [platforms2.TORRE, 23600, 359],
                  [platforms2.TORRE, 23600, 430],
-                 [platforms2.MEDIANO1, 23750, 380],
+                 [platforms2.MEDIANO1, 23800, 350],
+                 [platforms2.TORRE, 24000, 288],
+                 [platforms2.TORRE, 24000, 359],
+                 [platforms2.TORRE, 24000, 430],
+                 [platforms2.BASICO1, 24400, 380],
+                 [platforms2.MEDIANO1, 24750, 280],
+                 [platforms2.LARGO1, 25000, 250],
+                 [platforms2.TORRE, 25350, 430],
+                 [platforms2.TORRE, 25500, 430],
+                 [platforms2.TORRE, 25650, 430],
+                 [platforms2.TORRE, 25800, 430],
+                 [platforms2.TORRE, 25950, 430],
+                 [platforms2.TORRE, 26150, 430],
+                 [platforms2.TORRE, 26300, 430],
+                 [platforms2.TORRE, 26450, 430],
+                 [platforms2.TORRE, 26600, 430],
+                 [platforms2.LARGO1, 26900, 300],
+                 [platforms2.LARGO1, 27100, 350],
+                 [platforms2.LARGO1, 27300, 300],
+                 [platforms2.BASICO1, 27550, 380],
+                 [platforms2.MEDIANO1, 27800, 280],
+                 [platforms2.LARGO1, 28100, 250],
+                 [platforms2.BASICO1, 28450, 380],
+                 [platforms2.MEDIANO1, 28800, 280],
+                 [platforms2.LARGO1, 29150, 250],
+                 [platforms2.BASICO1, 29350, 380],
+                 [platforms2.LARGO1, 29600, 250],
+
+                 
+                 
+
+
                  
                  
                  
@@ -363,8 +418,105 @@ class Level_02(Level):
         self.platform_list.add(block)  
         
         
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 25350
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -2
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block)  
+
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 25500
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -1
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block)
+
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 25650
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -2
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block) 
         
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 25800
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -1
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block) 
+        
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 25950
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -2
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block)
+        
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 26150
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -1
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block)  
+
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 26300
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -2
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block) 
           
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 26450
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -1
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block) 
+        
+        block = platforms2.MovingPlatform2(platforms2.TORRE)
+        block.rect.x = 26600
+        block.rect.y = 150
+        block.boundary_top = 150
+        block.boundary_bottom = 430
+        block.mover_y = -2
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block) 
+        
+        block = platforms2.MovingPlatform2(platforms2.LARGO1)
+        block.rect.x = 29800
+        block.rect.y = 300
+        block.boundary_left = 29800
+        block.boundary_right = 32000
+        block.mover_x = -2
+        block.player = self.player
+        block.nivel = self
+        self.platform_list.add(block)
         # Add a custom moving platform 20350
         #block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
         #block.rect.x = 1500
