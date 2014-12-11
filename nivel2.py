@@ -25,16 +25,37 @@ class Level_02(Level):
         self.level_limit = -32000
 
         # Enemigos
-        #ene = enemigos.MovingPlatform()
-        #ene.rect.x = 2610
-        #ene.rect.y = 390
-        #ene.boundary_left = 
-        #ene.boundary_right = 2680
-        #ene.mover_x = 1
-        #ene.player = self.player
-        #ene.nivel = self
+        ene = enemigos.MovingPlatform()
+        ene.rect.x = 3000
+        ene.rect.y = 400
+        ene.boundary_left = 3000
+        ene.boundary_right = 3200
+        ene.mover_x = 1
+        ene.player = self.player
+        ene.nivel = self
+
+        ene1 = enemigos.MovingPlatform()
+        ene1.rect.x = 4000
+        ene1.rect.y = 400
+        ene1.boundary_left = 4000
+        ene1.boundary_right = 4600
+        ene1.mover_x = 1
+        ene1.player = self.player
+        ene1.nivel = self
         
-        #self.enemy_list.add(ene)
+        ene2 = enemigos.MovingPlatform()
+        ene2.rect.x = 4200
+        ene2.rect.y = 400
+        ene2.boundary_left = 4200
+        ene2.boundary_right = 4700
+        ene2.mover_x = 1
+        ene2.player = self.player
+        ene2.nivel = self
+        
+        
+        self.enemy_list.add(ene)
+        self.enemy_list.add(ene1)
+        self.enemy_list.add(ene2)
 
         #COMIDAS
         
@@ -46,6 +67,9 @@ class Level_02(Level):
         self.lista_de_comidas.add(Naranja(2660,350))
         self.lista_de_comidas.add(Azul(3000,420))
         self.lista_de_comidas.add(Amarillo2(3400,420))
+        self.lista_de_comidas.add(Negro3(3850,320))
+        self.lista_de_comidas.add(Azul3(4200,380))
+        self.lista_de_comidas.add(Azul3(4400,380))
         
         # Array with type of platform, and x, y location of the platform.
         level = [ 
